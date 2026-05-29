@@ -1,127 +1,126 @@
-# NetVision AI
+# 🌐 NetVision AI — Cyber-HUD Network Operations Center (NOC)
 
-Plataforma de observabilidade para redes corporativas com foco em ambientes MikroTik + Omada.
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js%2014-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## Arquitetura
+Uma plataforma de telemetria e observabilidade de redes corporativas em tempo real, com design imersivo de alta tecnologia inspirado em **Cyber-HUDs futuristas (cyberpunk holográfico)**. O sistema integra streaming bidirecional de dados via WebSockets com uma interface moderna Next.js de alta legibilidade, simulando diagnósticos avançados de rede, análise de Wi-Fi e inteligência artificial para diagnósticos.
 
+---
+
+## 🎨 O Design: Cyber-HUD Holographic Theme
+O diferencial visual do **NetVision AI** é a imersão tecnológica:
+*   **Fundo Escuro Profundo**: Utiliza tonalidades escuras (`#040712`) com cartões translúcidos com desfoque de fundo (`backdrop-blur`).
+*   **Acentos Neon de Alta Fidelidade**: Destaques em Ciano Neon (`#00E5FF`), Laranja Elétrico (`#FF9100`) e Verde Ativo (`#00E676`).
+*   **Efeitos HUD Dinâmicos**: Varredura a laser animada (`tech-sweep`), efeito CRT scanline cobrindo a viewport e cantoneiras digitais nos cartões que brilham ao passar o mouse.
+*   **Tela de Inicialização Limpa**: Sequência de carregamento orbital tecnológica sem textos poluídos para transição suave no carregamento do painel.
+
+---
+
+## 🛠️ Arquitetura do Sistema
+
+```text
+┌───────────────────────────┐         ┌───────────────────────────┐
+│     Frontend Client       │         │      Backend Server       │
+│  ┌─────────────────────┐  │         │  ┌─────────────────────┐  │
+│  │   Next.js 14 Web    │◀─┼─────────┼─▶│   FastAPI Python    │  │
+│  └─────────────────────┘  │   REST  │  └─────────────────────┘  │
+│  ┌─────────────────────┐  │         │  ┌─────────────────────┐  │
+│  │   Recharts Charts   │  │         │  │  Websocket Engine   │  │
+│  └─────────────────────┘  │◀────────┼──│  (Métricas a cada   │  │
+│  ┌─────────────────────┐  │   WS    │  │   2 segundos)       │  │
+│  │  HTML5 Canvas Topo  │  │         │  └─────────────────────┘  │
+│  └─────────────────────┘  │         │  ┌─────────────────────┐  │
+│  ┌─────────────────────┐  │         │  │   Network Simulator │  │
+│  │    Zustand Store    │  │         │  │    (Ping & Security)│  │
+│  └─────────────────────┘  │         │  └─────────────────────┘  │
+└───────────────────────────┘         └───────────────────────────┘
 ```
-┌─────────────┐     ┌──────────────┐
-│  Frontend   │────▶│   Backend    │
-│  Next.js    │◀───▶│   FastAPI    │
-│  Tailwind   │  WS │   Python     │
-│  Recharts   │     │   WebSocket  │
-└─────────────┘     └──────┬───────┘
-                           │
-                    ┌──────▼───────┐
-                    │  Simulador   │
-                    │  de Rede     │
-                    │  (Engine)    │
-                    └──────────────┘
-```
 
-- **Frontend**: Next.js 14 (App Router) + TailwindCSS + Recharts + Zustand
-- **Backend**: FastAPI + WebSockets + SSE
-- **Realtime**: WebSocket para streaming de métricas (2s de intervalo)
+*   **Frontend**: Next.js (App Router), TailwindCSS, Recharts, Zustand para controle de estado, e Canvas nativo para o mapa de topologia de rede.
+*   **Backend**: FastAPI, Asyncio (gerenciamento assíncrono), WebSockets para transmissão de dados de telemetria sem latência.
+*   **Orquestração**: Totalmente dockerizado com compilação otimizada Next.js (`standalone`) para produção.
 
-## Funcionalidades
+---
 
-### Reais (40%)
-| Funcionalidade | Status |
-|---------------|--------|
-| Dashboard com métricas em tempo real via WebSocket | ✅ |
-| Gráficos de throughput (Download/Upload) | ✅ |
-| Topologia de rede interativa com Canvas | ✅ |
-| Descoberta de dispositivos (simulada) | ✅ |
-| Ping e latência de dispositivos | ✅ |
-| Distribuição de clientes Wi-Fi | ✅ |
-| Alertas em tempo real | ✅ |
-| Engine de análise de segurança | ✅ |
-| Chat com respostas contextuais (IA mock) | ✅ |
+## 🚀 Funcionalidades Principais
 
-### Visuais (60%)
-| Funcionalidade | Status |
-|---------------|--------|
-| Dashboard profissional dark theme | ✅ |
-| Animações na topologia de rede | ✅ |
-| Gradientes e efeitos glow | ✅ |
-| Cards responsivos com indicadores | ✅ |
-| Tabelas com progress bars | ✅ |
-| Timeline de eventos de segurança | ✅ |
+*   📈 **Dashboard de Métricas**: Throughput de rede (Upload/Download) em tempo real, jitter, consumo de CPU/Memória com indicadores estáticos e dinâmicos em formato HUD.
+*   🌐 **Topologia de Rede Dinâmica**: Mapeamento interativo de roteadores, switches, servidores e clientes ativos na LAN, com indicação de ping em milissegundos e status.
+*   📶 **Análise de Redes Wi-Fi**: Gráfico de distribuição de clientes por frequência (2.4 GHz e 5 GHz), largura de canal e status de sinal (RSSI).
+*   🛡️ **Painel de Segurança**: Histórico em tempo real de tentativas de intrusão, escaneamento de portas ativas, detecção de falsos pacotes ARP e firewall integrado.
+*   🤖 **AI Diagnostic Assistant**: Chat interativo integrado com IA contextualizada que analisa os problemas de rede da topologia e sugere configurações práticas.
 
-## Como executar
+---
 
-### Docker (recomendado)
+## 📦 Como Executar Localmente
+
+### Pré-requisitos
+*   [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/) instalados.
+
+### Execução via Docker
+Para subir todo o ecossistema (Frontend no `3000` + Backend no `8000`) com um único comando:
 
 ```bash
 docker-compose up --build
 ```
+Após o carregamento, acesse **`http://localhost:3000`**.
 
-Acessar: http://localhost:3000
+---
 
-### Desenvolvimento
+## ⚙️ Deploy em Nuvem (Coolify ou Portainer)
 
-**Backend:**
-```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate  # Windows
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+### Variáveis de Ambiente (Crítico para Produção)
+Quando implantado na web, o código Next.js do frontend roda **no navegador do visitante**. Por isso, você deve apontar a API do frontend para o endereço público do backend. No painel do seu provedor (Coolify/Portainer), configure as variáveis de ambiente no serviço frontend:
+
+```env
+NEXT_PUBLIC_API_URL=https://api-netvision.seu-dominio.com
+NEXT_PUBLIC_WS_URL=wss://api-netvision.seu-dominio.com
 ```
 
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm run dev
-```
+### 1. Implantação no Coolify (Recomendado)
+O Coolify automatiza todo o provisionamento de certificados SSL (HTTPS/WSS) e gerenciamento de rotas.
 
-## Endpoints da API
+1.  Acesse o Coolify e crie um **Novo Projeto**.
+2.  Escolha **Add New Resource** e selecione **Docker Compose**.
+3.  Vincule ao repositório do seu GitHub: `https://github.com/anjggti-eng/NetVision.git`.
+4.  O Coolify reconhecerá o arquivo `docker-compose.yml` e criará duas aplicações.
+5.  Nas configurações de cada serviço, defina o domínio público de cada um (ex: `https://netvision.meudominio.com` para o frontend e `https://api.meudominio.com` para o backend).
+6.  O Coolify gerará o HTTPS e o WSS automaticamente.
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| GET | `/api/health` | Health check |
-| GET | `/api/dashboard/metrics` | Métricas do dashboard |
-| GET | `/api/dashboard/devices` | Lista de dispositivos |
-| GET | `/api/dashboard/throughput` | Histórico de throughput |
-| GET | `/api/dashboard/alerts` | Alertas ativos |
-| WS | `/api/dashboard/ws` | WebSocket de métricas |
-| GET | `/api/topology/data` | Dados da topologia |
-| GET | `/api/topology/scan` | Scan de sub-rede |
-| GET | `/api/topology/ping` | Ping dispositivo |
-| GET | `/api/wifi/clients` | Clientes Wi-Fi |
-| GET | `/api/wifi/stats` | Estatísticas Wi-Fi |
-| GET | `/api/security/events` | Eventos de segurança |
-| GET | `/api/security/stats` | Estatísticas de segurança |
-| POST | `/api/ai/chat` | Chat com assistente AI |
+### 2. Implantação no Portainer
+1.  Vá para a seção **Stacks** do Portainer e clique em **Add Stack**.
+2.  Cole o conteúdo do arquivo `docker-compose.yml` contido na raiz do projeto.
+3.  Defina as variáveis de ambiente públicas do frontend conforme descrito no bloco acima.
+4.  Clique em **Deploy Stack**.
+5.  Configure o seu proxy reverso favorito (Nginx Proxy Manager, Caddy, etc.) para apontar o domínio desejado para as portas locais `3000` (frontend) e `8000` (backend) do seu servidor VPS.
 
-## Estrutura do Projeto
+---
 
-```
+## 📂 Estrutura do Projeto
+
+```text
 netvision-ai/
-├── frontend/
+├── frontend/             # Next.js 14 Webapp
 │   ├── src/
-│   │   ├── app/           # Páginas (App Router)
-│   │   ├── components/    # Componentes React
-│   │   │   ├── ui/        # Sidebar, Header, Cards
-│   │   │   ├── charts/    # Gráficos Recharts
-│   │   │   └── topology/  # Topologia Canvas
-│   │   ├── lib/           # API e WebSocket clients
-│   │   ├── store/         # Zustand store
-│   │   └── types/         # TypeScript types
-│   ├── package.json
-│   └── tailwind.config.ts
-├── backend/
+│   │   ├── app/          # Rotas e páginas do App Router (dashboard, topology, etc.)
+│   │   ├── components/   # Interface visual (charts, canvas de topologia, sidebar)
+│   │   ├── lib/          # Handlers de conexões WebSocket e requisições Axios
+│   │   └── store/        # Zustand para controle global de estados da aplicação
+│   ├── Dockerfile        # Build otimizado standalone para produção em nuvem
+│   └── tailwind.config.ts# Configuração do Tema Cyber-HUD e animações personalizadas
+├── backend/              # Python FastAPI Backend
 │   ├── app/
-│   │   ├── routers/       # Endpoints REST
-│   │   ├── services/      # Lógica de negócio
-│   │   ├── models/        # Schemas Pydantic
-│   │   └── websocket/     # WS manager
-│   ├── requirements.txt
-│   └── Dockerfile
-└── docker-compose.yml
+│   │   ├── routers/      # Rotas REST agrupadas (AI, Segurança, Wi-Fi, Topologia)
+│   │   ├── services/     # Simuladores de rede corporativa e alertas assíncronos
+│   │   └── websocket/    # Gerenciamento de conexões ativas para streaming
+│   ├── Dockerfile        # Imagem lightweight rodando Uvicorn assíncrono
+│   └── requirements.txt  # Dependências do backend Python
+└── docker-compose.yml    # Orquestrador local multi-serviços
 ```
 
-## Licença
+---
 
-MIT
+## 📝 Licença
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais informações.
