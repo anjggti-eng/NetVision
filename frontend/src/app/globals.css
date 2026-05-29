@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 229, 255, 0.2) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 229, 255, 0.2);
+    border-radius: 3px;
+  }
+
+  body {
+    background: #040712;
+    color: #E2E8F0;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(6, 11, 23, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 229, 255, 0.12);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+  }
+
+  .glow-border {
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15), inset 0 0 10px rgba(0, 229, 255, 0.05);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00E5FF, #0052FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .status-dot.online {
+    background: #00E676;
+    box-shadow: 0 0 10px #00E676, 0 0 20px rgba(0, 230, 118, 0.5);
+  }
+
+  .status-dot.offline {
+    background: #FF1744;
+    box-shadow: 0 0 10px #FF1744, 0 0 20px rgba(255, 23, 68, 0.5);
+  }
+
+  .status-dot.degraded {
+    background: #FF9100;
+    box-shadow: 0 0 10px #FF9100, 0 0 20px rgba(255, 145, 0, 0.5);
+  }
+  /* HUD Cyber Brackets */
+  .hud-bracket-tl {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-top: 1.5px solid rgba(0, 229, 255, 0.45);
+    border-l-width: 1.5px;
+    border-left-color: rgba(0, 229, 255, 0.45);
+    border-top-left-radius: 2px;
+    pointer-events: none;
+  }
+
+  .hud-bracket-tr {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-top: 1.5px solid rgba(0, 229, 255, 0.45);
+    border-r-width: 1.5px;
+    border-right-color: rgba(0, 229, 255, 0.45);
+    border-top-right-radius: 2px;
+    pointer-events: none;
+  }
+
+  .hud-bracket-bl {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-bottom: 1.5px solid rgba(0, 229, 255, 0.45);
+    border-l-width: 1.5px;
+    border-left-color: rgba(0, 229, 255, 0.45);
+    border-bottom-left-radius: 2px;
+    pointer-events: none;
+  }
+
+  .hud-bracket-br {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-bottom: 1.5px solid rgba(0, 229, 255, 0.45);
+    border-r-width: 1.5px;
+    border-right-color: rgba(0, 229, 255, 0.45);
+    border-bottom-right-radius: 2px;
+    pointer-events: none;
+  }
+
+  /* Scanline CRT overlay */
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 229, 255, 0.012) 50%,
+      rgba(0, 229, 255, 0.012)
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* High tech laser sweep */
+  @keyframes sweep {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  
+  .tech-sweep {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.025), transparent);
+    animation: sweep 12s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Dot matrix micro grids */
+  .dot-matrix {
+    background-image: radial-gradient(rgba(0, 229, 255, 0.04) 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
+  }
+
+  /* Hover glow card effect */
+  .glass-card:hover {
+    border-color: rgba(0, 229, 255, 0.35) !important;
+    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card:hover .hud-bracket-tl,
+  .glass-card:hover .hud-bracket-tr,
+  .glass-card:hover .hud-bracket-bl,
+  .glass-card:hover .hud-bracket-br {
+    border-color: rgba(0, 229, 255, 0.85) !important;
+  }
+
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
